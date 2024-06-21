@@ -7,6 +7,26 @@ export default async function UserCard() {
   const Id = 1;
   const data = await getUserInfo(Id);
 
+  if (!data) {
+    return (
+      <div>
+        <Card className="min-w-[235px]">
+          <CardContent className="flex flex-row gap-4 p-4">
+            <div>
+              <Avatar>
+                <AvatarImage />
+                <AvatarFallback>not found</AvatarFallback>
+              </Avatar>
+            </div>
+            <div className="flex flex-col gap-2">
+              <p className="font-medium text-center">User not found</p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div>
       <Card className="min-w-[235px]">
